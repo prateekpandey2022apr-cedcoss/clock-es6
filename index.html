@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <style>
+      body {
+        max-width: 750px;
+        margin: 0 auto;
+        font-weight: 500;
+      }
+
+      .clock {
+        background-color: #f0f7fd;
+        margin: 100px 0;
+        padding: 50px 10px;
+        text-align: center;
+        border: 1px solid #e3e3e3;
+      }
+
+      #time {
+        font-size: 25px;
+      }
+
+      #date {
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <p id="time">Loading ...</p>
+      <p id="date">Loading ...</p>
+    </div>
+
+    <script>
+      const month = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      const weekday = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ];
+
+      let time_el = document.getElementById("time");
+      let date_el = document.getElementById("date");
+
+      function init_clock() {
+        setInterval(() => {
+          let str = "";
+          let today = new Date();
+          // el.textContent = today.toTimeString();
+
+          let hour = today.getDate();
+          // let month = today.getMonth();
+          let year = today.getFullYear();
+
+          time_el.innerText = today.toTimeString();
+          date_el.innerText = `${weekday[today.getDay()]}, ${hour}-${
+            month[today.getMonth()]
+          }-${year}`;
+        }, 1000);
+      }
+
+      (function () {
+        init_clock();
+      })();
+    </script>
+  </body>
+</html>
